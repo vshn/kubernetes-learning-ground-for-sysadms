@@ -4,8 +4,8 @@
 Learn kubernetes by performing a manual installation (using kubeadm). The target audiance are experienced are Linux SysAdmins with one minimal kubernetes know-how. In order to keep the focus on the container platform installation and configuration, most of the system related configuration tasks will be automated.
 
 == Requirements
-- Vagrant
 - VirtualBox
+- Vagrant + vagrant-hostmanager + vagrant-vbguest
 
 == Container Platform Components
 
@@ -14,10 +14,14 @@ The following components will be used:
 - CentOS 7 for the VMs OS
 - Docker CE 19.03.4
 
+== Hostname Information
+master.klg.local
+
 
 == Create the "Control Pane" VM
 ```sh
 vagrant up
+vagrant ssh
 ```
 
 
