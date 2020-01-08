@@ -4,4 +4,5 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
     end
   config.vm.box = "geerlingguy/centos7"
+  config.vm.provision "shell", path: "scripts/force-legacy-iptables.sh"
 end
