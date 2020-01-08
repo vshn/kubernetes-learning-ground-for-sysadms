@@ -21,12 +21,23 @@ master.klg.local
 == Create the "Control-Plane" VM
 ```sh
 vagrant up
-vagrant ssh
+vagrant ssh-config --host master > ssh_config
 ```
 
 === Control-Plane Setup
 
+.Login to the master VM
+[source,shell]
+----
+ssh -F ssh_config master
+----
+
+.Create the cluster (API server)
+[source,shell]
+----
 kubeadm init --apiserver-advertise-address 192.168.42.2
+----
+
 
 == References:
 
