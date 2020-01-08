@@ -13,17 +13,20 @@ The following components will be used:
 
 - CentOS 7 for the VMs OS
 - Docker CE 19.03.4
+- Kubernetes 1.17.0
 
 == Hostname Information
 master.klg.local
 
-
-== Create the "Control Pane" VM
+== Create the "Control-Plane" VM
 ```sh
 vagrant up
 vagrant ssh
 ```
 
+=== Control-Plane Setup
+
+kubeadm init --apiserver-advertise-address 192.168.42.2
 
 == References:
 
