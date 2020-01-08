@@ -5,4 +5,5 @@ Vagrant.configure("2") do |config|
     end
   config.vm.box = "geerlingguy/centos7"
   config.vm.provision "shell", path: "scripts/force-legacy-iptables.sh"
+  config.vm.provision "shell", path: "scripts/install-docker-ce.sh"
 end
