@@ -10,6 +10,4 @@ Learn kubernetes by performing a manual installation (using kubeadm). The target
 == Create the "Control Pane" VM
 ```sh
 vagrant up
-
-````
-1. mkdir
+```
