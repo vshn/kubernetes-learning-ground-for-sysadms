@@ -1,3 +1,6 @@
+
+:source-highlighter: highlightjs
+
 = Kubernetes Learning Grround For SysAdms
 
 == Motivation
@@ -19,21 +22,22 @@ The following components will be used:
 master.klg.local
 
 == Create the "Control-Plane" VM
-```sh
+```bash
 vagrant up
+# Generate
 vagrant ssh-config --host master > ssh_config
 ```
 
 === Control-Plane Setup
 
 .Login to the master VM
-[source,shell]
+[source,sh]
 ----
 ssh -F ssh_config master
 ----
 
 .Create the cluster (API server)
-[source,shell]
+[source,sh]
 ----
 kubeadm init --apiserver-advertise-address 192.168.42.2
 ----
