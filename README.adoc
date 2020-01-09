@@ -1,7 +1,5 @@
-
-:source-highlighter: highlightjs
-
 = Kubernetes Learning Grround For SysAdms
+:source-highlighter: highlightjs
 
 == Motivation
 Learn kubernetes by performing a manual installation (using kubeadm). The target audiance are experienced are Linux SysAdmins with one minimal kubernetes know-how. In order to keep the focus on the container platform installation and configuration, most of the system related configuration tasks will be automated.
@@ -18,13 +16,16 @@ The following components will be used:
 - Docker CE 19.03.4
 - Kubernetes 1.17.0
 
-== Hostname Information
-master.klg.local
+== Kubernetes Fundamentals
+
+include::fundamentals/nodes.adoc[]
+
 
 == Create the "Control-Plane" VM
+
 ```bash
 vagrant up
-# Generate
+# Generate a custom ssh_config to reach the VM
 vagrant ssh-config --host master > ssh_config
 ```
 
@@ -39,8 +40,27 @@ ssh -F ssh_config master
 .Create the cluster (API server)
 [source,sh]
 ----
-kubeadm init --apiserver-advertise-address 192.168.42.2
+sudo kubeadm init --apiserver-advertise-address 192.168.42.2
 ----
+
+At this time you have a bare kubernetes control plane running, ready to receive requests at _https://192.168.42.2_ .
+
+.Configure your profile for kubernetes clients
+[source,sh]
+----
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+----
+
+.Check your configuration
+[source,sh]
+----
+kubectl cluster-info
+kubectl get nodes
+----
+
+NOTE: The STATUS will be shown as NotReady
 
 
 == References:

@@ -1,0 +1,15 @@
+=== Nodes
+A Kubernetes cluster is composed by one or more logical nodes, a node represents a _working machine_ where application containers can be deployed. A node is created by deploying a set of services into a physical or virtual machine and will be associated with one or more roles. The exact set of kubernetes services required on each node will depend on its roles. Every node will run the https://kubernetes.io/docs/concepts/overview/components/#node-components[node components].
+
+TIP: In the context of sysadmins, he term `node` is frequently associated with a system/VM/OS where the node services and containers run.
+
+Kubernetes does not define standard node roles, each distribution provides their own built-in roles and cluster admmins can create custom roles for specific purposes (e.g. compute, storage). For the sake of simplicity we will refer to the `master` and `worker` roles.
+
+
+==== Master Node
+The configuration management and orchestration capabilities of a kubernetes cluster are provided by the https://kubernetes.io/docs/concepts/overview/components/#master-components[master components], at least one master node must be available to run those services.
+
+TIP: If you need high availability for the master services, at least 3 master nodes and fail-over balancing over those nodes is required.
+
+==== Worker Node
+A worker node provides a set of resources that are available to run applications using a container runtime. Nodes will run the containers that are assigned to them by the https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/[kube-scheduler].
